@@ -1,7 +1,7 @@
-# Dockerfile - Ubuntu Xenial
+# Dockerfile - Debian Jessie
 # https://github.com/openresty/docker-openresty
 
-FROM armv7/armhf-ubuntu:xenial
+FROM armhfbuild/debian:jessie
 
 MAINTAINER Evan Wies <evan@neomantra.net>
 
