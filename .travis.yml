@@ -5,11 +5,9 @@ language: bash
 
 install: true
 
-before_script:
-- sudo apt-get --yes --no-install-recommends install binfmt-support qemu-user-static
-- sudo sh -c 'echo ":arm:M::\x7fELF\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x28\x00:\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff:/usr/bin/qemu-arm-static:" >/proc/sys/fs/binfmt_misc/register'
-
 script:
+# prepare qemu
+  docker run --rm --privileged multiarch/qemu-user-static:register --reset
 # build image
 - docker build -t mahnkong/docker-openresty armhf-jessie
 # push image

@@ -1,7 +1,7 @@
 # Dockerfile - Debian Jessie
 # https://github.com/openresty/docker-openresty
 
-FROM armhfbuild/debian:jessie
+FROM resin/rpi-raspbian:jessie
 
 MAINTAINER Evan Wies <evan@neomantra.net>
 
