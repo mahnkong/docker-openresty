@@ -1,9 +1,11 @@
 # Dockerfile - Debian Jessie
 # https://github.com/openresty/docker-openresty
 
-FROM resin/rpi-raspbian:jessie
+FROM maidbot/resin-raspberrypi3-qemu
 
 MAINTAINER Evan Wies <evan@neomantra.net>
+
+RUN [ "cross-build-start" ]
 
 # Docker Build Arguments
 ARG RESTY_VERSION="1.11.2.2"
@@ -99,6 +101,8 @@ RUN \
     && DEBIAN_FRONTEND=noninteractive apt-get autoremove -y \
     && ln -sf /dev/stdout /usr/local/openresty/nginx/logs/access.log \
     && ln -sf /dev/stderr /usr/local/openresty/nginx/logs/error.log
+
+RUN [ "cross-build-end" ]
 
 # TODO: remove any other apt packages?
 ENTRYPOINT ["/usr/local/openresty/bin/openresty", "-g", "daemon off;"]
